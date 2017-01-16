@@ -1,0 +1,12 @@
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\MPSIT.Services.dll
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\MPSIT.Services.pdb
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\MPSIT.Data.dll
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\EntityFramework.dll
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\MPSIT.Data.pdb
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\EntityFramework.xml
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\obj\Debug\MPSIT.Services.csprojResolveAssemblyReference.cache
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\obj\Debug\MPSIT.Services.dll
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\obj\Debug\MPSIT.Services.pdb
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\MPSIT.Services.dll.config
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documents\Master\MPSIT\MPSIT.git\MPSIT-Project\MPSIT.Services\bin\Debug\EntityFramework.SqlServer.xml

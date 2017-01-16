@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPSIT", "MPSIT\MPSIT.csproj", "{DF9C6CF4-7C0A-49B1-82C1-F1841736FFA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPSIT.Data", "MPSIT.Data\MPSIT.Data.csproj", "{1A88E14D-6BA0-4CCF-83DD-0C60AE662874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPSIT.Services", "MPSIT.Services\MPSIT.Services.csproj", "{EC53638F-CFDB-4E8C-86AE-B2EA1AD24341}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DF9C6CF4-7C0A-49B1-82C1-F1841736FFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF9C6CF4-7C0A-49B1-82C1-F1841736FFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF9C6CF4-7C0A-49B1-82C1-F1841736FFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A88E14D-6BA0-4CCF-83DD-0C60AE662874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A88E14D-6BA0-4CCF-83DD-0C60AE662874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A88E14D-6BA0-4CCF-83DD-0C60AE662874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A88E14D-6BA0-4CCF-83DD-0C60AE662874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC53638F-CFDB-4E8C-86AE-B2EA1AD24341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC53638F-CFDB-4E8C-86AE-B2EA1AD24341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC53638F-CFDB-4E8C-86AE-B2EA1AD24341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC53638F-CFDB-4E8C-86AE-B2EA1AD24341}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
