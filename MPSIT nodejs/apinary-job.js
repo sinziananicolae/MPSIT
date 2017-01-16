@@ -18,7 +18,7 @@ var sendApinaryData = function() {
 	});
 	
 	request({
-		url: "http://requestb.in/143za1b1",
+		url: "http://localhost:2276/api/hive",
 		method: "POST",
 		json: sensorsData
 	}, function(error, response, body){
@@ -30,12 +30,12 @@ var sendApinaryData = function() {
 
 var getHiveData = function(guid, date) {
 	var hiveData = {};
-	hiveData.guid = guid;
-	hiveData.timestamp = date;
-	hiveData.temperature = generateIntData(-10, 40);
-	hiveData.humidity = generateIntData(0, 100);
-	hiveData.weight = generateFloatData(20, 30);
-	hiveData.light = generateIntData(0, 255);
+	hiveData.GUID = guid;
+	hiveData.Timestamp = date;
+	hiveData.Temperature = generateIntData(-10, 40);
+	hiveData.Humidity = generateIntData(0, 100);
+	hiveData.Weight = generateFloatData(20, 30);
+	hiveData.Light = generateIntData(0, 255);
 	return hiveData;
 };
 

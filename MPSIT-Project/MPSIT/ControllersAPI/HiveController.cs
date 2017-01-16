@@ -1,4 +1,5 @@
-﻿using MPSIT.Services.HiveService;
+﻿using MPSIT.Models;
+using MPSIT.Services.HiveService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,11 @@ namespace MPSIT.ControllersAPI
         public object Get()
         {
             return _hiveService.getHives();
+        }
+
+        public object Post(List<SensorsDataModel> model)
+        {
+            return new { };
         }
         
     }
