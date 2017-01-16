@@ -19,15 +19,25 @@ namespace MPSIT.ControllersAPI
         }
 
         // GET api/<controller>
-        public object Get()
+        public object Get(int hiveId)
         {
-            return _hiveService.GetHives();
+            return _hiveService.GetLastHiveFile(hiveId);
         }
 
         public void Post(List<SensorsDataModel> model)
         {
             _hiveService.InsertHivesData(model);
         }
-        
+
+        [HttpPost]
+        [Route("api/hive/file")]
+        public void SaveHiveFile(HiveFileModel model)
+        {
+            if (model.Id == 0)
+                _hiveService.SaveHiveFile(model);
+            else
+                _hiveService.UpdateHiveFile(model);
+        }
+
     }
 }

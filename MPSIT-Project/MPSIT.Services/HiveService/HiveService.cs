@@ -53,6 +53,33 @@ namespace MPSIT.Services.HiveService
             };
         }
 
+        public void SaveHiveFile(HiveFileModel model) {
+            _dbEntities.HiveInfoes.Add(new HiveInfo
+            {
+                HiveId = model.HiveId,
+                Cleanness = model.Cleanness,
+                Food = model.Food,
+                Health = model.Health,
+                Larvae = model.Larvae,
+                Status = model.Status,
+                Timestamp = model.Timestamp
+            });
+            _dbEntities.SaveChanges();
+        }
+
+        public void UpdateHiveFile(HiveFileModel model)
+        {
+            HiveInfo hiveInfo = _dbEntities.HiveInfoes.FirstOrDefault(f => f.Id == model.Id);
+            hiveInfo.Cleanness = model.Cleanness;
+            hiveInfo.Food = model.Food;
+            hiveInfo.Health = model.Health;
+            hiveInfo.Larvae = model.Larvae;
+            hiveInfo.Status = model.Status;
+            hiveInfo.Timestamp = model.Timestamp;
+
+            _dbEntities.SaveChanges();
+        }
+
         public void InsertHivesData(List<SensorsDataModel> model) {
 
             foreach(SensorsDataModel hiveData in model)
