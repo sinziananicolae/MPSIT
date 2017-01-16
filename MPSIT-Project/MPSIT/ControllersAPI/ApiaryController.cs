@@ -33,9 +33,11 @@ namespace MPSIT.ControllersAPI
         [Route("api/apiary/all")]
         public object GetAllApiaries()
         {
+            var userId = User.Identity.GetUserId();
+
             return new
             {
-                data = _apiaryService.GetApiariesInfo()
+                data = _apiaryService.GetApiariesInfo(userId)
             };
         }
 

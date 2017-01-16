@@ -64,7 +64,7 @@ namespace MPSIT.Services.ApiaryService
             return apiaries;
         }
 
-        public List<object> GetApiariesInfo()
+        public List<object> GetApiariesInfo(string userId)
         {
             List<object> apiaries = new List<object>();
             IEnumerable<Apiary> allApiaries = _dbEntities.Apiaries.ToList();
@@ -78,7 +78,8 @@ namespace MPSIT.Services.ApiaryService
                     apiary.Longitude,
                     apiary.BeeSpecies,
                     HivesNo = apiary.Hives.Count(),
-                    OwnerEmail = apiary.AspNetUser.Email
+                    OwnerEmail = apiary.AspNetUser.Email,
+                    IsOwner = apiary.UserId == userId ? true : false
                 });
             }
 

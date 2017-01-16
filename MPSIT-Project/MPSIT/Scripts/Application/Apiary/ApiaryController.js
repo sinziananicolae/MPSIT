@@ -8,7 +8,13 @@
         $scope.apiaryId = $routeParams.id;
 
         ApiaryService.get(function (response) {
-            $scope.data = response.data;
+            
+            if ($scope.apiaryId) {
+                var apiary = _.find(response.data, function (data) { return data.Id == $scope.apiaryId });
+                $scope.data = [apiary];
+            } else {
+                $scope.data = response.data;
+            }
         });
 
         $scope.getClass = function (type, values) {
