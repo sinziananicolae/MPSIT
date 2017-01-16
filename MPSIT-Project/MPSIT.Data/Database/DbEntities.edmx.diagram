@@ -5,14 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ff1becde4d9144089ad77eb23288a520" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" />
-        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
-        <EntityTypeShape EntityType="Model.Test" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Apiary" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="Model.Hive" Width="1.5" PointX="7.5" PointY="8.625" />
+        <EntityTypeShape EntityType="Model.HiveInfo" Width="1.5" PointX="9.75" PointY="6.625" />
+        <EntityTypeShape EntityType="Model.SensorData" Width="1.5" PointX="9.75" PointY="10.125" />
+        <EntityTypeShape EntityType="Model.Test" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="Model.FK__Apinary__UserId__276EDEB3" />
+        <AssociationConnector Association="Model.FK__Hive__ApinaryId__2C3393D0" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Model.FK__HiveInfo__HiveId__31EC6D26" />
+        <AssociationConnector Association="Model.FK__SensorDat__HiveI__2F10007B" />
         <AssociationConnector Association="Model.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>

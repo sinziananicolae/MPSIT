@@ -9,25 +9,25 @@ using System.Web.Http;
 
 namespace MPSIT.ControllersAPI
 {
-    public class HiveController : ApiController
+    public class SensorsInfoController : ApiController
     {
         private HiveService _hiveService;
 
-        public HiveController()
+        public SensorsInfoController()
         {
             _hiveService = new HiveService();
         }
 
-        // GET api/<controller>
-        public object Get()
+        // GET api/<controller>/5
+        public string Get(int id)
         {
-            return _hiveService.GetHives();
+            return "value";
         }
 
+        // POST api/<controller>
         public void Post(List<SensorsDataModel> model)
         {
-            _hiveService.InsertHivesData(model);
+            _hiveService.SaveSensorsData(model);
         }
-        
     }
 }

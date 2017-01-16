@@ -11,6 +11,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Apiaries">
+      <EntityTypeMapping TypeName="Model.Apiary">
+        <MappingFragment StoreEntitySet="Apiary">
+          <ScalarProperty Name="BeeSpecies" ColumnName="BeeSpecies" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AspNetRoles">
       <EntityTypeMapping TypeName="Model.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">
@@ -52,6 +63,42 @@
           <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
           <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hives">
+      <EntityTypeMapping TypeName="Model.Hive">
+        <MappingFragment StoreEntitySet="Hive">
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="ApiaryId" ColumnName="ApiaryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HiveInfoes">
+      <EntityTypeMapping TypeName="Model.HiveInfo">
+        <MappingFragment StoreEntitySet="HiveInfo">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Health" ColumnName="Health" />
+          <ScalarProperty Name="Cleanness" ColumnName="Cleanness" />
+          <ScalarProperty Name="Larvae" ColumnName="Larvae" />
+          <ScalarProperty Name="Food" ColumnName="Food" />
+          <ScalarProperty Name="HiveId" ColumnName="HiveId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SensorDatas">
+      <EntityTypeMapping TypeName="Model.SensorData">
+        <MappingFragment StoreEntitySet="SensorData">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Light" ColumnName="Light" />
+          <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+          <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+          <ScalarProperty Name="HiveId" ColumnName="HiveId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -10,6 +10,16 @@
     <Property Name="Model" Type="varbinary(max)" Nullable="false" />
     <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
   </EntityType>
+  <EntityType Name="Apiary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+    <Property Name="Latitude" Type="varchar" MaxLength="255" />
+    <Property Name="Longitude" Type="varchar" MaxLength="255" />
+    <Property Name="BeeSpecies" Type="varchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
       <PropertyRef Name="Id" />
@@ -61,6 +71,39 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
+  <EntityType Name="Hive">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApiaryId" Type="int" Nullable="false" />
+    <Property Name="GUID" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HiveInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HiveId" Type="int" Nullable="false" />
+    <Property Name="Food" Type="varchar" MaxLength="255" />
+    <Property Name="Larvae" Type="varchar" MaxLength="255" />
+    <Property Name="Cleanness" Type="varchar" MaxLength="255" />
+    <Property Name="Health" Type="varchar" MaxLength="255" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SensorData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HiveId" Type="int" Nullable="false" />
+    <Property Name="Temperature" Type="int" Nullable="false" />
+    <Property Name="Humidity" Type="int" Nullable="false" />
+    <Property Name="Light" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Test">
     <Key>
       <PropertyRef Name="Id" />
@@ -68,6 +111,62 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="255" />
   </EntityType>
+  <Association Name="FK__Apinary__UserId__276EDEB3">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Apiary" Type="Self.Apiary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apiary">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Hive__ApinaryId__2C3393D0">
+    <End Role="Apiary" Type="Self.Apiary" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Hive" Type="Self.Hive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apiary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hive">
+        <PropertyRef Name="ApiaryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HiveInfo__HiveId__31EC6D26">
+    <End Role="Hive" Type="Self.Hive" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HiveInfo" Type="Self.HiveInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hive">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HiveInfo">
+        <PropertyRef Name="HiveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SensorDat__HiveI__2F10007B">
+    <End Role="Hive" Type="Self.Hive" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SensorData" Type="Self.SensorData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hive">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorData">
+        <PropertyRef Name="HiveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -126,12 +225,32 @@
   </Association>
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Apiary" EntityType="Self.Apiary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hive" EntityType="Self.Hive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HiveInfo" EntityType="Self.HiveInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SensorData" EntityType="Self.SensorData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Apinary__UserId__276EDEB3" Association="Self.FK__Apinary__UserId__276EDEB3">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Apiary" EntitySet="Apiary" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Hive__ApinaryId__2C3393D0" Association="Self.FK__Hive__ApinaryId__2C3393D0">
+      <End Role="Apiary" EntitySet="Apiary" />
+      <End Role="Hive" EntitySet="Hive" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HiveInfo__HiveId__31EC6D26" Association="Self.FK__HiveInfo__HiveId__31EC6D26">
+      <End Role="Hive" EntitySet="Hive" />
+      <End Role="HiveInfo" EntitySet="HiveInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SensorDat__HiveI__2F10007B" Association="Self.FK__SensorDat__HiveI__2F10007B">
+      <End Role="Hive" EntitySet="Hive" />
+      <End Role="SensorData" EntitySet="SensorData" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />

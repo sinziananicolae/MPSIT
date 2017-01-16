@@ -26,10 +26,14 @@ namespace MPSIT.Data.Database
         }
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<Apiary> Apiaries { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Hive> Hives { get; set; }
+        public virtual DbSet<HiveInfo> HiveInfoes { get; set; }
+        public virtual DbSet<SensorData> SensorDatas { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
     }
 }

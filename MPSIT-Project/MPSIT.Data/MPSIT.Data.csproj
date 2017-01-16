@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Apiary.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\AspNetRole.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
@@ -80,6 +83,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Hive.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\HiveInfo.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SensorData.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Test.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>

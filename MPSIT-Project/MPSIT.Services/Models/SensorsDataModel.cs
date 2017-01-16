@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MPSIT.Models
+namespace MPSIT.Services.Models
 {
     public class SensorsDataModel
     {
         public String GUID { get; set; }
+        public int ApiaryId { get; set; }
         public int Temperature { get; set; }
         public int Humidity { get; set; }
         public float Weight { get; set; }
