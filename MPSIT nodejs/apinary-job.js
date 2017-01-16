@@ -17,11 +17,11 @@ var generateFloatData = function(low, high) {
 	return Math.random() * (high - low) + low;
 }
 
-var getHiveData = function(guid, date) {
+var getHiveData = function(guid) {
 	var hiveData = {};
 	hiveData.ApiaryId = apiaryId;
 	hiveData.GUID = guid;
-	hiveData.Timestamp = date;
+	hiveData.Timestamp = new Date();
 	hiveData.Temperature = generateIntData(-10, 40);
 	hiveData.Humidity = generateIntData(0, 100);
 	hiveData.Weight = generateFloatData(20, 30);
@@ -32,9 +32,8 @@ var getHiveData = function(guid, date) {
 var sendApinaryData = function() {
 	var apinaryGuids = beehivesData.getApiaryHivesData(apiaryId);
 	var sensorsData = [];
-	var currentDateTime = new Date();
 	_.each(apinaryGuids, function(guid){
-		var currentHiveData = getHiveData(guid, currentDateTime);
+		var currentHiveData = getHiveData(guid);
 		sensorsData.push(currentHiveData);
 	});
 

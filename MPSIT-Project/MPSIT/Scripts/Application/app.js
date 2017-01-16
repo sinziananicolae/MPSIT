@@ -18,7 +18,7 @@
 			}).when('/apiary/:id?', {
 			    templateUrl: './Scripts/Application/Apiary/apiary.html',
 			    controller: 'ApiaryController'
-			}).when('/hivefile', {
+			}).when('/hive/:id?', {
 			    templateUrl: './Scripts/Application/HiveFile/hiveFile.html',
 			    controller: 'HiveFileController'
 			}).when('/map', {

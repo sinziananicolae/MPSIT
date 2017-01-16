@@ -23,7 +23,24 @@
                         <div class="box-header with-border">
                             <div class="user-block">
                                 <img class="img-circle"
-                                     src="/Content/img/hive.png" alt="Apiary"> <span class="username"><a href="#/hive/{{hive.Id}}">Hive_{{hive.Id}}</a></span>
+                                     src="/Content/img/hive.png" alt="Apiary"> <span class="username">
+                                    <a href="#/hive/{{hive.Id}}">Hive_{{hive.Id}}</a>
+                                    <span uib-popover-template="template" ng-if="hive.HiveFile"
+                                          popover-placement="bottom" popover-title="Hive info"
+                                          class="cursor-pointer">
+                                         <i class="fa fa-info-circle"></i>
+                                    </span>
+                                    <script type="text/ng-template"
+                                            id="hiveInfo.html">
+                                        <div>Date: {{hive.HiveFile.Timestamp| date:'d/MM/yyyy h:mm:ss a': '+04'}}</div>
+                                        <div>Health: {{hive.HiveFile.Health}}</div>
+                                        <div>Food: {{hive.HiveFile.Food}}</div>
+                                        <div>Cleanness: {{hive.HiveFile.Cleanness}}</div>
+                                        <div>Larvae: {{hive.HiveFile.Larvae}}</div>
+                                        <div>Status: <span class="{{getClass('s', hive.HiveFile)}}">{{hive.HiveFile.Status}}</span></div>
+
+                                    </script>
+                                </span>
                                 <span class="description">
                                     <a>Data gathered from sensors is displayed below</a>
                                 </span>
@@ -38,7 +55,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-md-12">
-                                <div>Latest sensors read: {{hive.SensorData.Timestamp | date:'MMM d, y h:mm:ss a': '+04'}}</div>
+                                <div>Latest sensors read: {{hive.SensorData.Timestamp | date:'d/MM/yyyy h:mm:ss a': '+04'}}</div>
                             </div>
                             <div class="col-md-6">
                                 <div>Humidity: <span class="{{getClass('h', hive.SensorData)}}">{{hive.SensorData.Humidity}}%</span></div>

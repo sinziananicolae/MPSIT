@@ -39,6 +39,7 @@ namespace MPSIT.Services.HiveService
 
         public object GetLastHiveFile(int hiveId) {
             var hiveInfo = _dbEntities.HiveInfoes.OrderByDescending(f => f.Timestamp).FirstOrDefault(f => f.HiveId == hiveId) ;
+            if (hiveInfo == null) return null;
 
             return new
             {

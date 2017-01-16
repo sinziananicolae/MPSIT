@@ -6,6 +6,8 @@
 
     function apiaryController($scope, $routeParams, ApiaryService) {
         $scope.apiaryId = $routeParams.id;
+        $scope.template = "hiveInfo.html";
+
 
         ApiaryService.get(function (response) {
             
@@ -32,6 +34,18 @@
                 case 'w':
                     if (values.Weight > 25)
                         return 'hive-ready';
+                    break;
+                case 's':
+                    switch (values.Status) {
+                        case "Weak":
+                            return 'warning-cold';
+                        case "Medium":
+                            return 'warning-medium';
+                        case "Strong":
+                            return 'hive-ready';
+                        case "Sick":
+                            return 'warning-out-of-range';
+                    }
                     break;
             }
         }

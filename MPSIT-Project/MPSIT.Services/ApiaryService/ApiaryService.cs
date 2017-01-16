@@ -10,10 +10,12 @@ namespace MPSIT.Services.ApiaryService
     public class ApiaryService
     {
         private Entities _dbEntities;
+        private HiveService.HiveService _hiveService;
 
         public ApiaryService()
         {
             _dbEntities = new Entities();
+            _hiveService = new HiveService.HiveService();
         }
 
         public List<object> GetApiaries(string userId)
@@ -47,7 +49,8 @@ namespace MPSIT.Services.ApiaryService
                     hives.Add(new
                     {
                         hive.Id,
-                        SensorData = sensorDatas[0]
+                        SensorData = sensorDatas[0],
+                        HiveFile = _hiveService.GetLastHiveFile(hive.Id)
                     });
                 }
 

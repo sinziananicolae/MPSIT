@@ -68,3 +68,8 @@
     color: deepskyblue;
     font-weight: bold;
 }
+
+.warning-medium {
+    color: orange;
+    font-weight: bold;
+}
