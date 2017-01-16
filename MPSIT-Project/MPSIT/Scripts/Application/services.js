@@ -10,7 +10,7 @@
     };
 
     angular.module('services', ['ngResource'])
-	    .factory('CloudsimService', ['$resource', function ($resource) {
-	        return $resource('/CloudsimServer/api/getResources/:id', { id: "@id" }, serviceMetods);
+	    .factory('UserService', ['$resource', function ($resource) {
+	        return $resource('/api/user', { }, serviceMetods);
 	    }]);
 }());

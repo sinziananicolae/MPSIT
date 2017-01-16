@@ -6,9 +6,9 @@
     @Scripts.Render("~/bundles/app")
 }
 
-<body class="hold-transition skin-yellow layout-boxed sidebar-mini" style="height: auto" ng-app="app">
+<body class="hold-transition skin-yellow layout-boxed sidebar-mini" style="height: auto" ng-app="app" ng-controller="GreetingController">
     <!-- Site wrapper -->
-    <div class="wrapper" style="overflow-y: hidden" custom-theme-functions >
+    <div class="wrapper" style="overflow-y: hidden" custom-theme-functions ng-hide="loading">
         <header class="main-header">
             <!-- Logo -->
             <a class="logo">
@@ -28,22 +28,21 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="Content/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <img src="Content/img/profile-pic.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{user.Email}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="Content/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="Content/img/profile-pic.png" class="img-circle" alt="User Image">
                                     <p>
-                                        Alexander Pierce - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        {{user.Email}}
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a class="btn btn-default btn-flat">Sign out</a>
+                                        <a class="btn btn-default btn-flat" ng-click="logOff()">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -60,10 +59,10 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="Content/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="~/Content/img/profile-pic.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                        <p>{{user.Email}}</p>
                         <a><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
@@ -72,7 +71,7 @@
                 <ul class="sidebar-menu">
                     <li>
                         <a href="/apinary">
-                            <i class="fa fa-th"></i> <span>Apinary</span>
+                            <i class="fa fa-th"></i> <span>Apiary</span>
                         </a>
                     </li>
                     <li>
