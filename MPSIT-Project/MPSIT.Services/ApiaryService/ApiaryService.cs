@@ -21,7 +21,7 @@ namespace MPSIT.Services.ApiaryService
             List<object> apiaries = new List<object>();
 
             IEnumerable<Apiary> allApiaries = _dbEntities.Apiaries.Where(f => f.UserId == userId).ToList();
-            foreach (Apiary apiary in apiaries)
+            foreach (Apiary apiary in allApiaries)
             {
                 IEnumerable<Hive> allHives = apiary.Hives;
                 List<object> hives = new List<object>();
@@ -31,7 +31,7 @@ namespace MPSIT.Services.ApiaryService
                     IEnumerable<SensorData> allSensorData = hive.SensorDatas;
                     List<object> sensorDatas = new List<object>();
 
-                    foreach (SensorData sensorData in allSensorData.OrderByDescending(f => f.Timestamp).Take(20))
+                    foreach (SensorData sensorData in allSensorData.OrderByDescending(f => f.Timestamp).Take(1))
                     {
                         sensorDatas.Add(new
                         {
@@ -47,7 +47,7 @@ namespace MPSIT.Services.ApiaryService
                     hives.Add(new
                     {
                         hive.Id,
-                        SensorData = sensorDatas
+                        SensorData = sensorDatas[0]
                     });
                 }
 
@@ -69,7 +69,7 @@ namespace MPSIT.Services.ApiaryService
             List<object> apiaries = new List<object>();
             IEnumerable<Apiary> allApiaries = _dbEntities.Apiaries.ToList();
 
-            foreach (Apiary apiary in apiaries)
+            foreach (Apiary apiary in allApiaries)
             {
                 apiaries.Add(new
                 {
@@ -79,6 +79,26 @@ namespace MPSIT.Services.ApiaryService
                     apiary.BeeSpecies,
                     HivesNo = apiary.Hives.Count(),
                     OwnerEmail = apiary.AspNetUser.Email
+                });
+            }
+
+
+            return apiaries;
+        }
+
+        public List<object> GetApiariesLocation(string userId) {
+            List<object> apiaries = new List<object>();
+            IEnumerable<Apiary> allApiaries = _dbEntities.Apiaries.Where(f=>f.UserId == userId).ToList();
+
+            foreach (Apiary apiary in allApiaries)
+            {
+                apiaries.Add(new
+                {
+                    apiary.Id,
+                    apiary.Latitude,
+                    apiary.Longitude,
+                    apiary.BeeSpecies,
+                    HivesNo = apiary.Hives.Count()
                 });
             }
 

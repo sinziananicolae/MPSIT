@@ -5,7 +5,7 @@ var _ = require('underscore-node');
 var request = require('request');
 var apiaryId = 1;
  
-schedule.scheduleJob('*/10 * * * * *', function(){
+schedule.scheduleJob('*/20 * * * * *', function(){
     sendApinaryData();
 });
 

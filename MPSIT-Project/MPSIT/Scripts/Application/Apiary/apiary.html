@@ -1,0 +1,57 @@
+﻿<div class="row m-0">
+    <div class="col-md-12" ng-repeat="apiary in data">
+        <div class="box box-widget">
+            <div class="box-header with-border">
+                <div class="user-block">
+                    <img class="img-circle"
+                         src="/Content/img/apiary-icon.png" alt="Apiary"> <span class="username"><a href="#/apiary/{{apiary.Id}}">Apiary_{{apiary.Id}}</a></span>
+                    <span class="description">
+                        <a>The hives in your apiary are listed below with their current status.</a>
+                    </span>
+                </div>
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool"
+                            data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-md-6" ng-repeat="hive in apiary.Hives">
+                    <div class="box box-widget">
+                        <div class="box-header with-border">
+                            <div class="user-block">
+                                <img class="img-circle"
+                                     src="/Content/img/hive.png" alt="Apiary"> <span class="username"><a href="#/hive/{{hive.Id}}">Hive_{{hive.Id}}</a></span>
+                                <span class="description">
+                                    <a>Data gathered from sensors is displayed below</a>
+                                </span>
+                            </div>
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool"
+                                        data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <div>Latest sensors read: {{hive.SensorData.Timestamp | date:'MMM d, y h:mm:ss a': '+04'}}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>Humidity: <span class="{{getClass('h', hive.SensorData)}}">{{hive.SensorData.Humidity}}%</span></div>
+                                <div>Light: {{hive.SensorData.Light*100/255 | number:2}}%</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>Temperature: <span class="{{getClass('t', hive.SensorData)}}">{{hive.SensorData.Temperature}} °C</span></div>
+                                <div>Weight: <span class="{{getClass('w', hive.SensorData)}}">{{hive.SensorData.Weight | number : 2}} kg</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

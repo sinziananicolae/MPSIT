@@ -1,1 +1,70 @@
-﻿
+﻿.user-block img {
+    width: auto;
+}
+
+.user-block .username, .user-block .description, .user-block .comment {
+    margin-left: 80px;
+}
+
+.box {
+    box-shadow: 1px 1px 1px 1px orange;
+}
+
+.layout-boxed .wrapper {
+    max-width: 1500px;
+}
+
+.funky-show-hide.ng-hide-add {
+  transform: rotateY(0);
+  transform-origin: left;
+  transition: all 1s ease-in-out;
+}
+
+.funky-show-hide.ng-hide-add.ng-hide-add-active {
+  transform: rotateY(90deg);
+}
+
+.funky-show-hide.ng-hide-remove {
+  transform: rotateY(90deg);
+  transform-origin: left;
+  transition: all 1s ease;
+}
+
+.funky-show-hide.ng-hide-remove.ng-hide-remove-active {
+  transform: rotateY(0);
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.m-l-60 {
+	margin-left: 60px !important;
+}
+
+.m-l-45 {
+	margin-left: 45px !important;
+}
+
+.m-l-25 {
+	margin-left: 25px !important;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.warning-out-of-range {
+    color: red;
+    font-weight: bold;
+}
+
+.hive-ready {
+    color: green;
+    font-weight: bold;
+}
+
+.warning-cold {
+    color: deepskyblue;
+    font-weight: bold;
+}

@@ -38,5 +38,18 @@ namespace MPSIT.ControllersAPI
                 data = _apiaryService.GetApiariesInfo()
             };
         }
+
+        [HttpGet]
+        [Route("api/apiary/location")]
+        public object GetApiariesLocations()
+        {
+            var userId = User.Identity.GetUserId();
+
+            return new
+            {
+                success = true,
+                data = _apiaryService.GetApiariesLocation(userId)
+            };
+        }
     }
 }

@@ -9,13 +9,23 @@
             "ui.bootstrap",
             "directivesTheme",
             "services",
-             "toastr"
+            "toastr",
+            "uiGmapgoogle-maps"
         ]).config(["$routeProvider", function($routeProvider) {
-			$routeProvider.when('/', {
+			$routeProvider.when('/home', {
 				templateUrl : './Scripts/Application/Home/home.html',
 				controller : 'HomeController'
+			}).when('/apiary/:id?', {
+			    templateUrl: './Scripts/Application/Apiary/apiary.html',
+			    controller: 'ApiaryController'
+			}).when('/hivefile', {
+			    templateUrl: './Scripts/Application/HiveFile/hiveFile.html',
+			    controller: 'HiveFileController'
+			}).when('/map', {
+			    templateUrl: './Scripts/Application/Map/map.html',
+			    controller: 'MapController'
 			}).otherwise({
-				redirectTo : '/'
+				redirectTo : '/home'
 			});
         }]).controller("GreetingController", ["$scope", "UserService", "toastr", function ($scope, userService, toastr) {
             $scope.loading = true;

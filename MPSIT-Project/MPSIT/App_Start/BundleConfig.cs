@@ -18,7 +18,8 @@ namespace MPSIT
                       "~/Scripts/Core/AngularJS/angular-route.min.js",
                       "~/Scripts/Core/AngularJS/angular-sanitize.min.js",
                       "~/Scripts/Core/AngularJS/angular-simple-logger.min.js",
-                      "~/Scripts/Core/AngularJS/angular-loader.min.js"));
+                      "~/Scripts/Core/AngularJS/angular-loader.min.js",
+                      "~/Scripts/Core/AngularJS/angular-google-maps.js"));
             #endregion
 
             #region Bootstrap
@@ -67,6 +68,11 @@ namespace MPSIT
                      "~/Scripts/Core/Underscore/underscore.min.js"));
             #endregion
 
+            #region Lodash
+            bundles.Add(new ScriptBundle("~/bundles/lodash").Include(
+                     "~/Scripts/Core/Lodash/lodash.js"));
+            #endregion
+
             #region Theme
             bundles.Add(new StyleBundle("~/Content/theme-css").Include(
                      "~/Content/Theme/AdminLTE.min.css",
@@ -81,7 +87,10 @@ namespace MPSIT
                     "~/Scripts/Application/app.js",
                     "~/Scripts/Core/Theme/custom.js",
                     "~/Scripts/Application/services.js",
-                    "~/Scripts/Application/Home/HomeController.js"
+                    "~/Scripts/Application/Home/HomeController.js",
+                    "~/Scripts/Application/Apiary/ApiaryController.js",
+                    "~/Scripts/Application/HiveFile/HiveFileController.js",
+                    "~/Scripts/Application/Map/MapController.js"
                      ));
             #endregion
         }
