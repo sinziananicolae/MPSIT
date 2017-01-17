@@ -121,7 +121,7 @@ namespace MPSIT.Services.HiveService
             IEnumerable<SensorData> allSensorData = hive.SensorDatas;
             List<object> sensorDatas = new List<object>();
 
-            foreach (SensorData sensorData in allSensorData.OrderByDescending(f => f.Timestamp).Take(20))
+            foreach (SensorData sensorData in allSensorData.OrderByDescending(f => f.Timestamp).Take(15))
             {
                 sensorDatas.Add(new
                 {

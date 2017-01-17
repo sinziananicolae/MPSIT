@@ -30,44 +30,43 @@
             $scope.hives = apiary.Hives;
             $scope.selectedHive = $scope.hives[0].Id;
         };
-
-        setInterval(function () { $scope.getHiveData(); }, 10000);
+        var interval;
+       
 
         $scope.getHiveData = function () {
             HiveService.get({ param: $scope.selectedHive }, function (response) {
                 $scope.hiveData = response;
                 $scope.sensorsDataAsc = response.SensorsData.reverse();
 
-                createTempChart();
-                createHumChart();
+                $scope.labels = [];
+                var dataTemp = [];
+                var dataHum = [];
+                var dataWeight = [];
+                var dataLight = [];
+
+                _.each($scope.sensorsDataAsc, function (sensorData) {
+                    $scope.labels.push(moment(sensorData.Timestamp).format("MM/DD/YYYY HH:mm:ss"));
+                    dataTemp.push(sensorData.Temperature);
+                    dataHum.push(sensorData.Humidity);
+                    dataWeight.push(sensorData.Weight);
+                    dataLight.push(sensorData.Light*100/255);
+                });
+                $scope.dataTemp = [dataTemp];
+                $scope.dataHum = [dataHum];
+                $scope.dataWeight = [dataWeight];
+                $scope.dataLight = [dataLight];
             });
+
+            if(!interval)
+                interval = setInterval(function () {
+
+                    $scope.getHiveData();
+                }, 10000);
         };
 
-        function createTempChart() {
-            
-            $scope.labelsTemp = [];
-            var data = [];
-
-            _.each($scope.sensorsDataAsc, function (sensorData) {
-                $scope.labelsTemp.push(moment(sensorData.Timestamp).format("MM/DD/YYYY HH:mm:ss"));
-                data.push(sensorData.Temperature);
-            });
-            $scope.dataTemp = [data];
-
-        }
-
-        function createHumChart() {
-
-            $scope.labelsHum = [];
-            var data = [];
-
-            _.each($scope.sensorsDataAsc, function (sensorData) {
-                $scope.labelsHum.push(moment(sensorData.Timestamp).format("MM/DD/YYYY HH:mm:ss"));
-                data.push(sensorData.Humidity);
-            });
-            $scope.dataHum = [data];
-
-        }
+        $scope.$on('$destroy', function () {
+            clearInterval(interval);
+        });
 
         $scope.getClass = function (type, values) {
             switch (type) {

@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" ng-if="hiveData">
     <div class="col-md-12 p-30">
         <div class="box">
             <div class="box-header">
@@ -63,15 +63,28 @@
     </div>
 </div>
 
-<div class="row p-30">
+<div class="row p-30" ng-if="hiveData">
     <div class="col-md-6">
         <div>Temperature Evolution</div>
         <canvas id="lineChartTemp" class="chart chart-line" chart-data="dataTemp"
-                chart-labels="labelsTemp"></canvas>
+                chart-labels="labels"></canvas>
     </div>
     <div class="col-md-6">
         <div>Humidity Evolution</div>
-        <canvas id="barChartHum" class="chart chart-bar" chart-data="dataHum" chart-labels="labelsHum">
+        <canvas id="barChartHum" class="chart chart-bar" chart-data="dataHum" chart-labels="labels">
         </canvas>
+    </div>
+</div>
+
+<div class="row p-30" ng-if="hiveData">
+    <div class="col-md-6">
+        <div>Weight Evolution</div>
+        <canvas id="baseChartWeight" class="chart-horizontal-bar"
+                chart-data="dataWeight" chart-labels="labels"></canvas>
+    </div>
+    <div class="col-md-6">
+        <div>Light Evolution</div>
+        <canvas id="lineChartLight" class="chart chart-line" chart-data="dataLight"
+                chart-labels="labels"></canvas>
     </div>
 </div>
