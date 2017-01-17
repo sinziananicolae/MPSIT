@@ -19,9 +19,9 @@ namespace MPSIT.ControllersAPI
         }
 
         // GET api/<controller>
-        public object Get(int hiveId)
+        public object Get(int id)
         {
-            return _hiveService.GetLastHiveFile(hiveId);
+            return _hiveService.GetHiveInformation(id);
         }
 
         public void Post(List<SensorsDataModel> model)

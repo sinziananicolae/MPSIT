@@ -19,7 +19,8 @@ namespace MPSIT
                       "~/Scripts/Core/AngularJS/angular-sanitize.min.js",
                       "~/Scripts/Core/AngularJS/angular-simple-logger.min.js",
                       "~/Scripts/Core/AngularJS/angular-loader.min.js",
-                      "~/Scripts/Core/AngularJS/angular-google-maps.js"));
+                      "~/Scripts/Core/AngularJS/angular-google-maps.js",
+                      "~/Scripts/Core/AngularJS/angular-chart.js"));
             #endregion
 
             #region Bootstrap
@@ -41,9 +42,19 @@ namespace MPSIT
                       "~/Content/FontAwesome/css/font-awesome.min.css"));
             #endregion
 
+            #region Moment
+            bundles.Add(new ScriptBundle("~/bundles/momentjs").Include(
+                        "~/Scripts/Core/Moment/moment.js"));
+            #endregion
+
             #region JQuery
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/Core/JQuery/jquery-1.12.3.min.js"));
+            #endregion
+
+            #region ChartJs
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
+                        "~/Scripts/Core/Chartjs/Chart.min.js"));
             #endregion
 
             #region JQuery-UI

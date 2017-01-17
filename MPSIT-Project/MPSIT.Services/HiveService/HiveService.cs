@@ -115,6 +115,32 @@ namespace MPSIT.Services.HiveService
             _dbEntities.SaveChanges();
         }
 
+        public object GetHiveInformation(int hiveId) {
+            var hive = _dbEntities.Hives.FirstOrDefault(f => f.Id == hiveId);
+
+            IEnumerable<SensorData> allSensorData = hive.SensorDatas;
+            List<object> sensorDatas = new List<object>();
+
+            foreach (SensorData sensorData in allSensorData.OrderByDescending(f => f.Timestamp).Take(20))
+            {
+                sensorDatas.Add(new
+                {
+                    sensorData.Id,
+                    sensorData.Humidity,
+                    sensorData.Light,
+                    sensorData.Temperature,
+                    sensorData.Weight,
+                    sensorData.Timestamp
+                });
+            }
+
+            return new {
+                HiveFiles = GetAllHiveFiles(hiveId),
+                SensorsData = sensorDatas,
+                hive.Id
+            };
+        }
+
 
     }
 }

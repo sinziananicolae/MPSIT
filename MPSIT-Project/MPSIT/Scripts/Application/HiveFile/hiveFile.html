@@ -1,1 +1,77 @@
-﻿hiveFile
+﻿<div class="row p-t-30">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="apiary" class="col-md-2 control-label">Apiary</label>
+
+                <div class="col-md-10">
+                    <select class="form-control" ng-model="selectedApiary" ng-options="apiary.Id as apiary.Name for apiary in data" ng-change="setHivesForApiary(apiary)"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="hive" class="col-md-2 control-label">Hive</label>
+
+                <div class="col-md-10">
+                    <select class="form-control" ng-model="selectedHive" ng-options="hive.Id as hive.Name for hive in hives"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-success" ng-click="getHiveData()">Get Hive Data</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 p-30">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Hive Files</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <th>Timestamp</th>
+                            <th>Cleanness</th>
+                            <th>Food</th>
+                            <th>Health</th>
+                            <th>Larvae</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr ng-repeat="hiveFile in hiveData.HiveFiles">
+                            <td>{{hiveFile.Id}}</td>
+                            <td>{{hiveFile.Timestamp| date:'d/MM/yyyy h:mm:ss a': '+04'}}</td>
+                            <td>{{hiveFile.Cleanness}}</td>
+                            <td>{{hiveFile.Food}}</td>
+                            <td>{{hiveFile.Health}}</td>
+                            <td>{{hiveFile.Larvae}}</td>
+                            <td><span class="{{getClass('s', hiveFile)}}">{{hiveFile.Status}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</div>
+
+<div class="row p-30">
+    <div class="col-md-6">
+        <div>Temperature Evolution</div>
+        <canvas id="lineChartTemp" class="chart chart-line" chart-data="dataTemp"
+                chart-labels="labelsTemp"></canvas>
+    </div>
+    <div class="col-md-6">
+        <div>Humidity Evolution</div>
+        <canvas id="barChartHum" class="chart chart-bar" chart-data="dataHum" chart-labels="labelsHum">
+        </canvas>
+    </div>
+</div>

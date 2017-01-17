@@ -42,6 +42,18 @@ namespace MPSIT.ControllersAPI
         }
 
         [HttpGet]
+        [Route("api/apiary/allIds")]
+        public object GetApiariesWithHivesIds()
+        {
+            var userId = User.Identity.GetUserId();
+
+            return new
+            {
+                data = _apiaryService.GetApiariesWithHivesIds(userId)
+            };
+        }
+
+        [HttpGet]
         [Route("api/apiary/location")]
         public object GetApiariesLocations()
         {

@@ -67,6 +67,35 @@ namespace MPSIT.Services.ApiaryService
             return apiaries;
         }
 
+        public List<object> GetApiariesWithHivesIds(string userId)
+        {
+            List<object> apiaries = new List<object>();
+
+            IEnumerable<Apiary> allApiaries = _dbEntities.Apiaries.Where(f => f.UserId == userId).ToList();
+            foreach (Apiary apiary in allApiaries)
+            {
+                IEnumerable<Hive> allHives = apiary.Hives;
+                List<object> hives = new List<object>();
+
+                foreach (Hive hive in allHives) { 
+                    hives.Add(new
+                    {
+                        hive.Id,
+                        Name = "Hive_" + hive.Id
+                    });
+                }
+
+                apiaries.Add(new
+                {
+                    apiary.Id,
+                    Name = "Apiary_" + apiary.Id,
+                    Hives = hives
+                });
+            }
+
+            return apiaries;
+        }
+
         public List<object> GetApiariesInfo(string userId)
         {
             List<object> apiaries = new List<object>();

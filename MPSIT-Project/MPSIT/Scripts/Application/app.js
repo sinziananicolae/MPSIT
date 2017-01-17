@@ -10,7 +10,8 @@
             "directivesTheme",
             "services",
             "toastr",
-            "uiGmapgoogle-maps"
+            "uiGmapgoogle-maps",
+            "chart.js"
         ]).config(["$routeProvider", function($routeProvider) {
 			$routeProvider.when('/home', {
 				templateUrl : './Scripts/Application/Home/home.html',

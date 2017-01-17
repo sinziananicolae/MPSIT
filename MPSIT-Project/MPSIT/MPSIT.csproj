@@ -268,6 +268,7 @@
     <Content Include="Scripts\Application\Map\MapController.js" />
     <Content Include="Scripts\Application\services.js" />
     <Content Include="Scripts\Core\AngularJS\angular-animate.min.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-chart.js" />
     <Content Include="Scripts\Core\AngularJS\angular-cookies.min.js" />
     <Content Include="Scripts\Core\AngularJS\angular-google-maps.js" />
     <Content Include="Scripts\Core\AngularJS\angular-loader.min.js" />
@@ -278,9 +279,11 @@
     <Content Include="Scripts\Core\AngularJS\angular.min.js" />
     <Content Include="Scripts\Core\Bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\Core\Bootstrap\ui-bootstrap-tpls-2.4.0.min.js" />
+    <Content Include="Scripts\Core\Chartjs\Chart.min.js" />
     <Content Include="Scripts\Core\JQuery\jquery-1.12.3.min.js" />
     <Content Include="Scripts\Core\JQuery\jquery-ui.min.js" />
     <Content Include="Scripts\Core\Lodash\lodash.js" />
+    <Content Include="Scripts\Core\Moment\moment.js" />
     <Content Include="Scripts\Core\Theme\custom.js" />
     <Content Include="Scripts\Core\Toastr\toastr.js" />
     <Content Include="Scripts\Core\Underscore\underscore.min.js" />

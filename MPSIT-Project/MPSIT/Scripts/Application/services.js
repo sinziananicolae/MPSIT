@@ -15,5 +15,8 @@
 	    }])
         .factory('ApiaryService', ['$resource', function ($resource) {
             return $resource('/api/apiary/:param', {param: '@param'}, serviceMetods);
+        }])
+        .factory('HiveService', ['$resource', function ($resource) {
+            return $resource('/api/hive/:param', { param: '@param' }, serviceMetods);
         }]);
 }());
