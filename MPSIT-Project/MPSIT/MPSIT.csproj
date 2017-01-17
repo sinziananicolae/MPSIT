@@ -262,6 +262,8 @@
     <Content Include="Scripts\Application\app.js" />
     <Content Include="Scripts\Application\HiveFile\hiveFile.html" />
     <Content Include="Scripts\Application\HiveFile\HiveFileController.js" />
+    <Content Include="Scripts\Application\Hive\hive.html" />
+    <Content Include="Scripts\Application\Hive\HiveController.js" />
     <Content Include="Scripts\Application\Home\home.html" />
     <Content Include="Scripts\Application\Home\HomeController.js" />
     <Content Include="Scripts\Application\Map\map.html" />

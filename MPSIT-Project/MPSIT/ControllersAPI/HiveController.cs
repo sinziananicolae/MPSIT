@@ -39,5 +39,12 @@ namespace MPSIT.ControllersAPI
                 _hiveService.UpdateHiveFile(model);
         }
 
+        [HttpGet]
+        [Route("api/hive/file/{id:int}")]
+        public object GetHiveFile(int id)
+        {
+            return _hiveService.GetHiveFile(id);
+        }
+
     }
 }

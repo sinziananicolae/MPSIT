@@ -101,6 +101,7 @@ namespace MPSIT
                     "~/Scripts/Application/Home/HomeController.js",
                     "~/Scripts/Application/Apiary/ApiaryController.js",
                     "~/Scripts/Application/HiveFile/HiveFileController.js",
+                     "~/Scripts/Application/Hive/HiveController.js",
                     "~/Scripts/Application/Map/MapController.js"
                      ));
             #endregion

@@ -20,11 +20,14 @@
 			    templateUrl: './Scripts/Application/Apiary/apiary.html',
 			    controller: 'ApiaryController'
 			}).when('/hive/:id?', {
-			    templateUrl: './Scripts/Application/HiveFile/hiveFile.html',
-			    controller: 'HiveFileController'
+			    templateUrl: './Scripts/Application/Hive/hive.html',
+			    controller: 'HiveController'
 			}).when('/map', {
 			    templateUrl: './Scripts/Application/Map/map.html',
 			    controller: 'MapController'
+			}).when('/hive-file/:hiveId/:id?', {
+			    templateUrl: './Scripts/Application/HiveFile/hiveFile.html',
+			    controller: 'HiveFileController'
 			}).otherwise({
 				redirectTo : '/home'
 			});

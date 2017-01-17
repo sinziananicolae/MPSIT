@@ -37,8 +37,26 @@ namespace MPSIT.Services.HiveService
             return allInfo;
         }
 
-        public object GetLastHiveFile(int hiveId) {
-            var hiveInfo = _dbEntities.HiveInfoes.OrderByDescending(f => f.Timestamp).FirstOrDefault(f => f.HiveId == hiveId) ;
+        public object GetHiveFile(int hiveFileId) {
+            var hiveInfo = _dbEntities.HiveInfoes.OrderByDescending(f => f.Timestamp).FirstOrDefault(f => f.Id == hiveFileId) ;
+            if (hiveInfo == null) return null;
+
+            return new
+            {
+                hiveInfo.HiveId,
+                hiveInfo.Id,
+                hiveInfo.Health,
+                hiveInfo.Food,
+                hiveInfo.Cleanness,
+                hiveInfo.Larvae,
+                hiveInfo.Status,
+                hiveInfo.Timestamp
+            };
+        }
+
+        public object GetLastHiveFile(int hiveId)
+        {
+            var hiveInfo = _dbEntities.HiveInfoes.OrderByDescending(f => f.Timestamp).FirstOrDefault(f => f.HiveId == hiveId);
             if (hiveInfo == null) return null;
 
             return new

@@ -1,90 +1,81 @@
-﻿<div class="row p-t-30">
+﻿<div class="row">
     <div class="col-md-12">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="apiary" class="col-md-2 control-label">Apiary</label>
 
-                <div class="col-md-10">
-                    <select class="form-control" ng-model="selectedApiary" ng-options="apiary.Id as apiary.Name for apiary in data" ng-change="setHivesForApiary(apiary)"></select>
+        <form class="form-horizontal">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Hive #{{currentHiveNo}}</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <button class="btn btn-default pull-right m-l-5" ng-click="cancelNewHiveFile()">Cancel</button>
+
+                    <button class="btn btn-success pull-right" ng-click="newHiveFile()" ng-if="!hiveFileId">New Hive File</button>
+                    <button class="btn btn-success pull-right" ng-click="saveHiveFile()" ng-if="hiveFileId">Update</button>
+
+                    <p ng-if="hiveFileId">Data: {{hiveFile.Timestamp | date:'d/MM/yyyy h:mm:ss a': '+04'}}</p>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-2 control-label input-label">Food</label>
+                        <div class="col-md-6 col-xs-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                <input type="text" class="form-control" ng-model="hiveFile.Food" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-2 control-label input-label">Larvae</label>
+                        <div class="col-md-6 col-xs-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                <input type="text" class="form-control" ng-model="hiveFile.Larvae" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-2 control-label input-label">Cleanness</label>
+                        <div class="col-md-6 col-xs-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                <input type="text" class="form-control" ng-model="hiveFile.Cleanness" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-2 control-label input-label">Health</label>
+                        <div class="col-md-6 col-xs-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                <input type="text" class="form-control" ng-model="hiveFile.Health" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span>
+                            <div class="col-md-12 col-xs-12 text-center">
+                                <label class="control-label">Hive Type</label>
+                            </div>
+                            <div class="col-md-12 col-xs-12 text-center" ng-repeat="hiveType in hiveTypes">
+                                <label class="check">
+                                    <input type="radio" class="icheckbox" ng-model="hiveFile.Status" ng-value="hiveType"/>
+                                    
+                                </label>
+                                {{hiveType}}
+                            </div>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
                 </div>
             </div>
-        </div>
+        </form>
 
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="hive" class="col-md-2 control-label">Hive</label>
-
-                <div class="col-md-10">
-                    <select class="form-control" ng-model="selectedHive" ng-options="hive.Id as hive.Name for hive in hives"></select>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-2">
-            <button type="button" class="btn btn-block btn-success" ng-click="getHiveData()">Get Hive Data</button>
-        </div>
-
-    </div>
-</div>
-
-<div class="row" ng-if="hiveData">
-    <div class="col-md-12 p-30">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Hive Files</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Id</th>
-                            <th>Timestamp</th>
-                            <th>Cleanness</th>
-                            <th>Food</th>
-                            <th>Health</th>
-                            <th>Larvae</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr ng-repeat="hiveFile in hiveData.HiveFiles">
-                            <td>{{hiveFile.Id}}</td>
-                            <td>{{hiveFile.Timestamp| date:'d/MM/yyyy h:mm:ss a': '+04'}}</td>
-                            <td>{{hiveFile.Cleanness}}</td>
-                            <td>{{hiveFile.Food}}</td>
-                            <td>{{hiveFile.Health}}</td>
-                            <td>{{hiveFile.Larvae}}</td>
-                            <td><span class="{{getClass('s', hiveFile)}}">{{hiveFile.Status}}</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.box-body -->
-        </div>
-    </div>
-</div>
-
-<div class="row p-30" ng-if="hiveData">
-    <div class="col-md-6">
-        <div>Temperature Evolution</div>
-        <canvas id="lineChartTemp" class="chart chart-line" chart-data="dataTemp"
-                chart-labels="labels"></canvas>
-    </div>
-    <div class="col-md-6">
-        <div>Humidity Evolution</div>
-        <canvas id="barChartHum" class="chart chart-bar" chart-data="dataHum" chart-labels="labels">
-        </canvas>
-    </div>
-</div>
-
-<div class="row p-30" ng-if="hiveData">
-    <div class="col-md-6">
-        <div>Weight Evolution</div>
-        <canvas id="baseChartWeight" class="chart-horizontal-bar"
-                chart-data="dataWeight" chart-labels="labels"></canvas>
-    </div>
-    <div class="col-md-6">
-        <div>Light Evolution</div>
-        <canvas id="lineChartLight" class="chart chart-line" chart-data="dataLight"
-                chart-labels="labels"></canvas>
     </div>
 </div>

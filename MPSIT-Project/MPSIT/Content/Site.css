@@ -54,6 +54,10 @@
 	margin-left: 25px !important;
 }
 
+.m-l-5 {
+    margin-left: 5px !important;
+}
+
 .cursor-pointer {
 	cursor: pointer;
 }
