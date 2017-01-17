@@ -16,6 +16,12 @@
                 $scope.data = [apiary];
             } else {
                 $scope.data = response.data;
+
+                _.each($scope.data, function (apiary) {
+                    var hives = _.filter(apiary.Hives, function (hive) { return hive.HiveFile });
+                    apiary.groupedHiveFiles = _.groupBy(hives, function (item) { return item.HiveFile.Status });
+                    console.log(apiary.groupedHiveFiles);
+                });
             }
         });
 
@@ -49,6 +55,40 @@
                     break;
             }
         }
+
+        $scope.getStatusClass = function (key) {
+            var classStyle = "";
+            switch (key) {
+                case 'Strong': classStyle = 'label label-success label-form'; break;
+                case 'Medium': classStyle = 'label label-warning label-form'; break;
+                case 'Weak': classStyle = 'label label-primary label-form'; break;
+                case 'Sick': classStyle = 'label label-danger label-form'; break;
+            }
+
+            return classStyle;
+        };
+
+        $scope.getProgressClass = function (key) {
+            var classStyle = "";
+            switch (key) {
+                case 'Strong': classStyle = 'progress-bar progress-bar-success'; break;
+                case 'Medium': classStyle = 'progress-bar progress-bar-warning'; break;
+                case 'Weak': classStyle = 'progress-bar progress-bar-primary'; break;
+                case 'Sick': classStyle = 'progress-bar progress-bar-danger'; break;
+            }
+
+            return classStyle;
+        };
+
+        $scope.getStatusPercent = function (no, apiary, style) {
+            var percent = no * 100 / apiary.Hives.length;
+            if (style) {
+                return { "width": +percent + "%" };
+
+            }
+            else return percent;
+
+        };
 
     }
 }());

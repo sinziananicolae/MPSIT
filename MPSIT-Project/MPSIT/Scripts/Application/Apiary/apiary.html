@@ -4,7 +4,7 @@
             <div class="box-header with-border">
                 <div class="user-block">
                     <img class="img-circle"
-                         src="/Content/img/apiary-icon.png" alt="Apiary"> <span class="username"><a href="#/apiary/{{apiary.Id}}">Apiary_{{apiary.Id}}</a></span>
+                         src="/Content/img/apiary-icon.png" alt="Apiary"> <span class="username"><a href="#/apiary/{{apiary.Id}}">Apiary_{{apiary.Id}}</a> - {{apiary.Hives.length}} hives</span>
                     <span class="description">
                         <a>The hives in your apiary are listed below with their current status.</a>
                     </span>
@@ -18,13 +18,44 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="10%">Status</th>
+                                    <th width="50%">Hive Ids</th>
+                                    <th width="40%">Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(key, value) in apiary.groupedHiveFiles">
+                                    <td style="vertical-align: middle;"><span ng-class="getStatusClass(key)">{{key}}</span></td>
+                                    <td style="vertical-align: middle;">
+                                        <strong ng-repeat="hive in value">
+                                            <a ng-href="#/hive/{{hive.Id}}">{{hive.Id}}</a>
+                                            <span ng-if='$index!==value.length-1'>,</span>
+                                        </strong>
+                                    </td>
+
+                                    <td style="vertical-align: middle;">
+                                        <div class="progress progress-striped active" style="width: 80%; float: left">
+                                            <div ng-class="getProgressClass(key)" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ng-style="getStatusPercent(value.length, apiary, 'style')"></div>
+                                        </div>
+                                        <span style="padding: 10px"> {{getStatusPercent(value.length, apiary) | number:2}}%<span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div class="col-md-6" ng-repeat="hive in apiary.Hives">
                     <div class="box box-widget">
                         <div class="box-header with-border">
                             <div class="user-block">
                                 <img class="img-circle"
                                      src="/Content/img/hive.png" alt="Apiary"> <span class="username">
-                                    <a href="#/hive/{{hive.Id}}">Hive_{{hive.Id}}</a>
+                                    <a href="#/hive/{{hive.Id}}" ng-style="{true: {'color' : 'red'}}[hive.HiveFile.Status == 'Sick']">Hive_{{$index}}</a>
                                     <span uib-popover-template="template" ng-if="hive.HiveFile"
                                           popover-placement="bottom" popover-title="Hive info"
                                           class="cursor-pointer">

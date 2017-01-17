@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <div class="col-md-12">
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" nonvalidate name="hiveFileForm">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><strong>Hive #{{currentHiveNo}}</strong></h3>
@@ -9,8 +9,8 @@
                 <div class="panel-body">
                     <button class="btn btn-default pull-right m-l-5" ng-click="cancelNewHiveFile()">Cancel</button>
 
-                    <button class="btn btn-success pull-right" ng-click="newHiveFile()" ng-if="!hiveFileId">New Hive File</button>
-                    <button class="btn btn-success pull-right" ng-click="saveHiveFile()" ng-if="hiveFileId">Update</button>
+                    <button class="btn btn-success pull-right" ng-click="saveHiveFile()" ng-if="!hiveFileId" ng-disabled="hiveFileForm.$invalid">New Hive File</button>
+                    <button class="btn btn-success pull-right" ng-click="saveHiveFile()" ng-if="hiveFileId" ng-disabled="hiveFileForm.$invalid">Update</button>
 
                     <p ng-if="hiveFileId">Data: {{hiveFile.Timestamp | date:'d/MM/yyyy h:mm:ss a': '+04'}}</p>
                 </div>
@@ -21,7 +21,7 @@
                         <div class="col-md-6 col-xs-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control" ng-model="hiveFile.Food" />
+                                <input type="text" class="form-control" ng-model="hiveFile.Food" required />
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                         <div class="col-md-6 col-xs-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control" ng-model="hiveFile.Larvae" />
+                                <input type="text" class="form-control" ng-model="hiveFile.Larvae" required />
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="col-md-6 col-xs-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control" ng-model="hiveFile.Cleanness" />
+                                <input type="text" class="form-control" ng-model="hiveFile.Cleanness" required />
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="col-md-6 col-xs-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control" ng-model="hiveFile.Health" />
+                                <input type="text" class="form-control" ng-model="hiveFile.Health" required />
                             </div>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                             </div>
                             <div class="col-md-12 col-xs-12 text-center" ng-repeat="hiveType in hiveTypes">
                                 <label class="check">
-                                    <input type="radio" class="icheckbox" ng-model="hiveFile.Status" ng-value="hiveType"/>
-                                    
+                                    <input type="radio" class="icheckbox" ng-model="hiveFile.Status" ng-value="hiveType" />
+
                                 </label>
                                 {{hiveType}}
                             </div>

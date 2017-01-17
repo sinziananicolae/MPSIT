@@ -4,6 +4,8 @@ this.getApiaryHivesData = function(apiaryId) {
 			return apiary1Hives;
 		case 2:
 			return apiary2Hives;
+		case 3:
+			return apiary3Hives;
 	}
 }
 
@@ -211,4 +213,28 @@ var apiary2Hives = [
 	"31f069a6-d820-4d92-8dbb-e3d62bf2fb05",
 	"52b0c616-cff9-48f5-976a-49a7a7a5a3e6",
 	"97aba388-95ec-4500-882f-2d1a2026d850"
+];
+
+var apiary3Hives = [
+	"f0dc9e16-0a5f-4dca-a285-ae297c3b7318",
+	"e50921bb-74fb-4310-a3ce-3c37763dd28f",
+	"88a21086-0ce3-4bb6-a1e3-4003c011d080",
+	"562aca2d-4123-40f6-865e-66662ce5a3b5",
+	"c96e9060-cc07-4501-85c9-41157fa4d16c",
+	"b008fbf9-81b7-4f98-8fb9-aba5a5b5e122",
+	"737bc4a0-c78f-4b68-95f2-95454ddfe10c",
+	"a4b4a9b8-0faa-4acc-a62a-65926c28eecf",
+	"42cb118a-2421-46cd-a852-a8e28e673a58",
+	"1da36224-e824-4de8-b0b5-62bc0e7d9fec",
+	"76386993-179e-4ca5-b6c8-aa99ba54685e",
+	"399fd955-aa97-4449-8dce-68ed0fd41393",
+	"e851f4b2-087b-4886-b069-51c1d22bcdd5",
+	"29cc66f4-715c-4783-b85a-352d0a9cf804",
+	"58c09ca3-1cd1-4bf3-b60b-ed57985cd412",
+	"f1fc007c-eba7-4a54-969d-6c2ae0a1a97c",
+	"593b80e3-efe1-457d-b92e-af2be651b11e",
+	"3ff7650d-b4d9-46c2-b065-5a03d21d1e24",
+	"e603b27e-0a8a-437a-9dbf-886cfa494798",
+	"5df9d42d-f250-442c-bf1d-fc7c9fed113f"
+
 ];

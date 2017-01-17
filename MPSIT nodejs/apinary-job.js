@@ -3,11 +3,12 @@ var https = require('https');
 var beehivesData = require("./beehivesData.js");
 var _ = require('underscore-node');
 var request = require('request');
-var apiaryId = 1;
+var apiaryId = 3;
  
 schedule.scheduleJob('*/20 * * * * *', function(){
     sendApinaryData();
 });
+
 
 var generateIntData = function(low, high){
 	return Math.floor(Math.random() * (high - low + 1) + low);
@@ -38,7 +39,7 @@ var sendApinaryData = function() {
 	});
 
 	request({
-		url: "http://localhost:2276/api/sensorsInfo",
+		url: "http://localhost:2276/api/sensorsInfo", //hive
 		method: "POST",
 		json: sensorsData
 	}, function(error, response, body){
@@ -47,6 +48,8 @@ var sendApinaryData = function() {
 	
 	console.log(sensorsData);
 };
+
+//sendApinaryData();
 
 
 
