@@ -11,7 +11,7 @@
 
     angular.module('services', ['ngResource'])
 	    .factory('UserService', ['$resource', function ($resource) {
-	        return $resource('/api/user', { }, serviceMetods);
+	        return $resource('/api/user/:param', {param : '@param' }, serviceMetods);
 	    }])
         .factory('ApiaryService', ['$resource', function ($resource) {
             return $resource('/api/apiary/:param', {param: '@param'}, serviceMetods);

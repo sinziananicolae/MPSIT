@@ -45,7 +45,7 @@
                 var dataLight = [];
 
                 _.each($scope.sensorsDataAsc, function (sensorData) {
-                    $scope.labels.push(moment(sensorData.Timestamp).format("MM/DD/YYYY HH:mm:ss"));
+                    $scope.labels.push(moment(sensorData.Timestamp).utcOffset('+0400').format("MM/DD/YYYY HH:mm:ss"));
                     dataTemp.push(sensorData.Temperature);
                     dataHum.push(sensorData.Humidity);
                     dataWeight.push(sensorData.Weight);

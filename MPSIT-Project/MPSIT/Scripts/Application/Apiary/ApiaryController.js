@@ -16,13 +16,13 @@
                 $scope.data = [apiary];
             } else {
                 $scope.data = response.data;
-
-                _.each($scope.data, function (apiary) {
-                    var hives = _.filter(apiary.Hives, function (hive) { return hive.HiveFile });
-                    apiary.groupedHiveFiles = _.groupBy(hives, function (item) { return item.HiveFile.Status });
-                    console.log(apiary.groupedHiveFiles);
-                });
             }
+
+            _.each($scope.data, function (apiary) {
+                var hives = _.filter(apiary.Hives, function (hive) { return hive.HiveFile });
+                apiary.groupedHiveFiles = _.groupBy(hives, function (item) { return item.HiveFile.Status });
+                console.log(apiary.groupedHiveFiles);
+            });
         });
 
         $scope.getClass = function (type, values) {

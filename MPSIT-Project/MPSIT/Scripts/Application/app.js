@@ -49,5 +49,11 @@
             $scope.logOff = function () {
                 window.location.href = "/Account/LogOff";
             }
+
+            $scope.getReport = function () {
+                userService.get({param: 'report'}, function (response) {
+                    
+                });
+            }
         }]);
 })();

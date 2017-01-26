@@ -41,5 +41,14 @@ namespace MPSIT.ControllersAPI
                 data = userProfile
             };
         }
+
+        [HttpGet]
+        [Route("api/user/report")]
+        public void SendReport()
+        {
+            var userId = User.Identity.GetUserId();
+
+            _userService.SendReport(userId);
+        }
     }
 }
